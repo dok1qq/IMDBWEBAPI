@@ -43,3 +43,6 @@ d:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\bin\ru\System.Web.Http.WebH
 d:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\obj\Debug\IMDBWEBAPI.csprojResolveAssemblyReference.cache
 d:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\obj\Debug\IMDBWEBAPI.dll
 d:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\obj\Debug\IMDBWEBAPI.pdb
+d:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\bin\HtmlAgilityPack.dll
+d:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\bin\HtmlAgilityPack.pdb
+d:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\bin\HtmlAgilityPack.xml

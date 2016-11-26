@@ -7,23 +7,21 @@ $(document).ready(function () {
     $.getJSON(uri)
         .done(function (data) {
             // On success, 'data' contains a list of products.
+            var film = document.getElementById("films");
             $.each(data, function (key, item) {
+                // Add a list item for the product. 
+                var el = document.createElement("li");
                 console.log(key, item);
-                // Add a list item for the product.
-                $('<li>', { text: formatItem(item) }).appendTo($('#films'));
+                el.innerHTML = item.Director + ":" + item.Title;
+                film.appendChild(el);
             });
         });
 });
-
-function formatItem(item) {
-    return item.Name + ': $' + item.Price;
-}
 
 function find() {
     var id = $('#filmId').val();
     $.getJSON(uri + '/' + id.toString())
         .done(function (data) {
-            console.log(data);
             var film = document.getElementById("film");
             film.innerHTML = data.Title;
         })
