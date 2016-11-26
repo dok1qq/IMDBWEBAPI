@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using IMDBWEBAPI.Models;
-using LiteDB;
 
 namespace IMDBWEBAPI.Controllers
 {
@@ -18,6 +17,7 @@ namespace IMDBWEBAPI.Controllers
             return _db.GetAllFilms();
         }
 
+        [HttpGet]
         public IHttpActionResult GetFilm(string id)
         {
             var film = _db.Control("title", id);
@@ -28,9 +28,11 @@ namespace IMDBWEBAPI.Controllers
             return Ok(film);
         }
 
-        public IHttpActionResult PostFilm(string name)
+        [HttpPost]
+        public IHttpActionResult PostFilm()
         {
-            var film = _db.Search(name);
+            var text = Request.Content.ReadAsStringAsync();
+            var film = _db.Search(text.Result);
             if (film == null)
             {
                 return NotFound();
