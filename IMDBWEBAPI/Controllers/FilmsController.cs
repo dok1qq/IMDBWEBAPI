@@ -10,34 +10,32 @@ namespace IMDBWEBAPI.Controllers
 {
     public class FilmsController : ApiController
     {
-        private static FilmsModel _db = new FilmsModel();
-
         public IEnumerable<Film> GetAllFilms()
         {
-            return _db.GetAllFilms();
+            return FilmsModel.GetAllFilms();
         }
 
         [HttpGet]
-        public IHttpActionResult GetFilm(string id)
+        public Film GetFilm(string id)
         {
-            var film = _db.Control("title", id);
+            var film = FilmsModel.Control("title", id);
             if (film == null)
             {
-                return NotFound();
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return Ok(film);
+            return film;
         }
 
         [HttpPost]
-        public IHttpActionResult PostFilm()
+        public Film PostFilm()
         {
             var text = Request.Content.ReadAsStringAsync();
-            var film = _db.Search(text.Result);
+            var film = FilmsModel.Search(text.Result);
             if (film == null)
             {
-                return NotFound();
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return Ok(film);
+            return film;
         }
     }
 }

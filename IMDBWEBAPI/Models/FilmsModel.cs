@@ -7,16 +7,16 @@ using HtmlAgilityPack;
 
 namespace IMDBWEBAPI.Models
 {
-    public class FilmsModel
+    public static class FilmsModel
     {
-        private string title = "//*[@itemprop='name']";
-        private string rating = "//*[@itemprop='ratingValue']";
-        private string description = "//*[@itemprop='description']";
-        private string creator = "//*[@itemprop='creator']/a/span";
-        private string fImage = "//*[@class='poster']/a";
-        private string nImage = "//*[@class='image']/a";
+        private static string title = "//*[@itemprop='name']";
+        private static string rating = "//*[@itemprop='ratingValue']";
+        private static string description = "//*[@itemprop='description']";
+        private static string creator = "//*[@itemprop='creator']/a/span";
+        private static string fImage = "//*[@class='poster']/a";
+        private static string nImage = "//*[@class='image']/a";
 
-        public void SetFilmInDB(Film film)
+        public static void SetFilmInDB(Film film)
         {
             using (var db = new LiteDatabase(@"D:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\bin\Films.db"))
             {
@@ -25,7 +25,7 @@ namespace IMDBWEBAPI.Models
             }
         }
 
-        public Film GetFilmFromDB(string id)
+        public static Film GetFilmFromDB(string id)
         {
             using (var db = new LiteDatabase(@"D:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\bin\Films.db"))
             {
@@ -34,7 +34,7 @@ namespace IMDBWEBAPI.Models
             }
         }
 
-        public IEnumerable<Film> GetAllFilms()
+        public static IEnumerable<Film> GetAllFilms()
         {
             using (var db = new LiteDatabase(@"D:\Projects\visual studio 2015\IMDBWEBAPI\IMDBWEBAPI\bin\Films.db"))
             {
@@ -43,7 +43,7 @@ namespace IMDBWEBAPI.Models
             }
         }
 
-        public Film Control(string property, string id)
+        public static Film Control(string property, string id)
         {
             Film film = GetFilmFromDB(id);
 
@@ -59,7 +59,7 @@ namespace IMDBWEBAPI.Models
             return film;
         }
 
-        public Film Search(string str)
+        public static Film Search(string str)
         {
             HtmlWeb web = new HtmlWeb();
 
@@ -75,7 +75,7 @@ namespace IMDBWEBAPI.Models
             return null;
         }
 
-        private Film GetInfoOfFilm(string property, string _id)
+        private static Film GetInfoOfFilm(string property, string _id)
         {
             HtmlWeb webId = new HtmlWeb();
 
